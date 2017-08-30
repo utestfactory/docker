@@ -19,9 +19,10 @@ RUN yum install -y wget && \
 ADD texlive.profile .
 RUN yum install -y perl-Tk perl-Digest-MD5 && \
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
-    tar xzf install-tl-unx.tar.gz && \
-    cd install-tl-20170830 && \
+    mkdir -p install-tl && \
+    tar xzf install-tl-unx.tar.gz -C install-tl --strip-components=1 && \
+    cd install-tl && \
     ./install-tl -profile ../texlive.profile && \
     export PATH=/usr/local/texlive/2017/bin/x86_64-linux/:$PATH && \
     cd .. && \
-    rm -rf install-tl-20170830
+    rm -rf install-tl

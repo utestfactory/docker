@@ -23,6 +23,6 @@ RUN yum install -y perl-Tk perl-Digest-MD5 && \
     tar xzf install-tl-unx.tar.gz -C install-tl --strip-components=1 && \
     cd install-tl && \
     ./install-tl -profile ../texlive.profile && \
-    export PATH=/usr/local/texlive/2017/bin/x86_64-linux/:$PATH && \
     cd .. && \
     rm -rf install-tl
+ENV PATH="/usr/local/texlive/2017/bin/x86_64-linux/:${PATH}"

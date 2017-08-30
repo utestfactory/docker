@@ -16,11 +16,12 @@ RUN yum install -y wget && \
     rm -rf pandocfilters-1.4.2
 
 # add tex-live for xelatex
+ADD texlive.profile .
 RUN yum install -y perl-Tk perl-Digest-MD5 && \
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
     tar xzf install-tl-unx.tar.gz && \
     cd install-tl-20170830 && \
-    ./install-tl && \
+    ./install-tl -profile ../texlive.profile && \
     export PATH=/usr/local/texlive/2017/bin/x86_64-linux/:$PATH && \
     cd .. && \
     rm -rf install-tl-20170830

@@ -7,10 +7,20 @@ RUN echo -e "[puias]\nname=Puias Computational\nbaseurl=http://springdale.math.i
 RUN yum install -y pandoc
 
 # add filters for python
-RUN wget https://github.com/jgm/pandocfilters/archive/1.4.2.tar.gz && \
+RUN yum install -y wget && \
+    wget https://github.com/jgm/pandocfilters/archive/1.4.2.tar.gz && \
     tar xzf 1.4.2.tar.gz && \
     cd pandocfilters-1.4.2 && \
     python setup.py install && \
     cd .. && \
-    rm pandocfilters
+    rm -rf pandocfilters-1.4.2
 
+# add tex-live for xelatex
+RUN yum install -y perl-Tk perl-Digest-MD5 && \
+    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+    tar xzf install-tl-unx.tar.gz && \
+    cd install-tl-20170830 && \
+    ./install-tl && \
+    export PATH=/usr/local/texlive/2017/bin/x86_64-linux/:$PATH && \
+    cd .. && \
+    rm -rf install-tl-20170830

@@ -1,0 +1,3 @@
+FROM centos:7
+MAINTAINER The U-TEST Team
+

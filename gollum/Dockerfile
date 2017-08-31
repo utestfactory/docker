@@ -10,8 +10,10 @@ RUN apk update && \
     rm -fr /var/cache/apk/* /usr/local/bundle/cache /root/.gem/ /root/.gemrc /root/.ash_history && \
     find /usr/local/bundle/ \( -name 'gem_make.out' -o -name 'mkmf.log' \) -delete
 
+COPY config.rb /usr/local/etc/
+
 VOLUME /wiki
 WORKDIR /wiki
 EXPOSE 4567
 
-CMD ["gollum", "--allow-uploads", "page" ]
+CMD ["gollum", "--allow-uploads page", "--config /usr/local/etc/config.rb" ]

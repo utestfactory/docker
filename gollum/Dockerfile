@@ -8,12 +8,11 @@ RUN apk update && \
     gem install gollum org-ruby RedCloth && \
     apk del make gcc g++ icu-dev && \
     rm -fr /var/cache/apk/* /usr/local/bundle/cache /root/.gem/ /root/.gemrc /root/.ash_history && \
-    find /usr/local/bundle/ \( -name 'gem_make.out' -o -name 'mkmf.log' \) -delete
+    find /usr/local/bundle/ \( -name 'gem_make.out' -o -name 'mkmf.log' \) -delete && \
+    mkdir /wiki
 
 COPY config.rb /usr/local/etc/
 
-VOLUME /wiki
-WORKDIR /wiki
 EXPOSE 4567
 
-CMD ["gollum", "--config /usr/local/etc/config.rb" ]
+CMD ["gollum", "--config", "/usr/local/etc/config.rb" ]

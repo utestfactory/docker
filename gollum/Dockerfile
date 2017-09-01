@@ -15,4 +15,6 @@ COPY config.rb /usr/local/etc/
 
 EXPOSE 4567
 
-CMD ["gollum", "--config", "/usr/local/etc/config.rb" ]
+# use ENTRYPOINT instead CMD allows to pass arguments to entry point
+ENTRYPOINT ["gollum", "--config", "/usr/local/etc/config.rb" ]
+CMD []

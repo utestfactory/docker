@@ -6,6 +6,10 @@ Based on _ruby/alpine_ (for lightweight _docker_ image).
 
 ## Usage
 
+You could add _gollum_ arguments to run this docker.
+
+For example: docker run ... utestfactory/gollum --ref=branch
+
 ### As a daemon
 
 docker run -d -p 4567:4567 -v "<your wiki pages directory>:/wiki" --name gollum utestfactory/gollum

@@ -1,4 +1,4 @@
-FROM utestfactory:gollum
+FROM utestfactory/gollum
 
 MAINTAINER The U-TEST Team
 # base on Dockerfile shifudao/gollum with 'textile' support

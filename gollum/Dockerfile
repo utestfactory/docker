@@ -16,4 +16,4 @@ VOLUME /wiki
 WORKDIR /wiki
 EXPOSE 4567
 
-CMD ["gollum", "--allow-uploads page", "--config /usr/local/etc/config.rb" ]
+CMD ["gollum", "--config /usr/local/etc/config.rb" ]

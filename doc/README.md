@@ -2,9 +2,9 @@
 
 _pandoc_ and tools dockerfile for documentation convertion (html/pdf...) on CentOS.
 
-## USage
+## Usage
 
-docker run -t -i --rm -v "<your wiki pages directory>:/wiki" utestfactory/docker
+  docker run -t -i --rm -v "<your git pages repository>:/wiki" utestfactory/doc
 then
-pandoc <options>
+  pandoc <options>
 (or build script)

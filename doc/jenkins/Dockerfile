@@ -6,7 +6,9 @@ MAINTAINER The U-TEST Team
 ENV JENKINS_PUBLIC_KEY="define" \
     GITLAB_SSH_PRIVATE_KEY="define"
 
-RUN yum install -y openssh-server
+RUN yum install -y openssh-server \
+        java-1.7.0-openjdk-devel
+
 RUN useradd -ms /bin/bash jenkins
 # Set password for the jenkins user (you may want to alter this).
 RUN echo -e "jenkins:jenkins\nroot:gc" | chpasswd

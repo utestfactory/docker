@@ -7,6 +7,7 @@ ENV JENKINS_PUBLIC_KEY="define" \
     GITLAB_SSH_PRIVATE_KEY="define"
 
 RUN yum install -y openssh-server \
+        git \
         java-1.7.0-openjdk-devel
 
 RUN useradd -ms /bin/bash jenkins

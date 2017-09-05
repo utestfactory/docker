@@ -26,5 +26,9 @@ chmod 600 ~/.ssh/id_rsa
 echo -e "Host u-test-factory.org\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
 echo -e "Host gitlab.u-test-factory.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
+# transfert PATH to ssh environment
+echo -e "PermitUserEnvironment yes" >> /etc/ssh/sshd_config
+echo -e "PATH=$PATH" >> ~/.ssh/environment
+
 # Run sshd
 /usr/sbin/sshd -D

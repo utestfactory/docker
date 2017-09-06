@@ -27,7 +27,7 @@ require 'omniauth-ldap'
 options = {
   :providers => Proc.new do
     provider :ldap,
-        :title => "Gollum Authentication USE YOUR WINDOWS CREDENTIALS e.g. aduser",
+        :title => '$ldaptitle',
         :host => '$ldapsrv',
         :port => 3268,
         :method => :plain,

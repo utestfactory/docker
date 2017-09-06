@@ -27,16 +27,16 @@ require 'omniauth-ldap'
 options = {
   :providers => Proc.new do
     provider :ldap,
-        :title => '$ldaptitle',
-        :host => '$ldapsrv',
-        :port => 3268,
+        :title => ENV['LDAP_TITLE'],
+        :host => ENV['LDAP_HOST'],
+        :port => ENV['LDAP_PORT'],
         :method => :plain,
-        :base => '$base',
-        :uid => 'sAMAccountName',
+        :base => ENV['LDAP_BASE'],
+        :uid => ENV['LDAP_UID'],
         #:filter => '(&(uid=%{username})(memberOf=cn=myapp-users,ou=groups,dc=example,dc=com))',
         #:name_proc => Proc.new {|name| name.gsub(/@.*$/,'')},
-        :bind_dn => '$aduser',
-        :password => '$password'
+        :bind_dn => ENV['LDAP_BIND_DN'],
+        :password => ENV['LDAP_PASS']
   end,
   :dummy_auth => false,
   :protected_routes => ['/*'],

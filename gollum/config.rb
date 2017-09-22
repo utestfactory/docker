@@ -1,3 +1,6 @@
+# add own filter for requirement rendering
+require '/usr/local/etc/req'
+
 # Remove const to avoid
 # warning: already initialized constant FORMAT_NAMES
 Gollum::Page.send :remove_const, :FORMAT_NAMES if defined? Gollum::Page::FORMAT_NAMES
@@ -13,7 +16,8 @@ wiki_options = {
   :live_preview => true,
   :allow_uploads => true,
   :per_page_uploads => true,
-  :allow_editing => true
+  :allow_editing => true,
+# filter_chain is taken from wiki.rb. Remember to update when new gollum version !!
+  :filter_chain => [:Req, :Metadata, :PlainText, :TOC, :RemoteCode, :Code, :Emoji, :Sanitize, :WSD, :PlantUML, :Tags, :Render]
 }
 Precious::App.set(:wiki_options, wiki_options)
-

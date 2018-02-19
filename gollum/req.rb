@@ -55,13 +55,18 @@ class Gollum::Filter::Req < Gollum::Filter
     def render_req(id, req)
         yreq = plang(req)
         ref = yreq['REF']
+        anchor = anchor_name(ref.dup)
         desc = yreq['DESC']
         create = yreq['CREATE']
         cover = render_cover(yreq['COVER'])
         status = yreq['STATUS']
         text = GitHub::Markup.render(@markup.name, yreq['REQ'])
         rational = GitHub::Markup.render(@markup.name, yreq['RATIONAL'])
+        if rational.empty?
+            rational = "N/A"
+        end
         "
+<div id=\"#{anchor}\" class=\"requirement\">
 <table style=\"width:100%;display: table;\">
   <tbody>
     <tr>
@@ -89,7 +94,8 @@ class Gollum::Filter::Req < Gollum::Filter
 <p>#{text}</p>
 <blockquote style=\"color:blue;\">#{rational}</blockquote>
 <hr></hr>
-<p>&nbsp;</p>"
+<p>&nbsp;</p>
+</div>"
 #      html_error("Sorry, unable to render Requirement at this time")
     end
 

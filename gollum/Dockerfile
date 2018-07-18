@@ -13,6 +13,7 @@ RUN apk update && \
 
 COPY config.rb /usr/local/etc/
 COPY req.rb /usr/local/etc/
+COPY test.rb /usr/local/etc/
 
 EXPOSE 4567
 

@@ -12,6 +12,7 @@ RUN apk update && \
     mkdir /wiki
 
 COPY config.rb /usr/local/etc/
+COPY pvt.rb /usr/local/etc/
 
 EXPOSE 4567
 
